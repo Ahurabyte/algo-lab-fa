@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Algo Lab · ساختار داده و الگوریتم‌ها، گام‌به‌گام</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--page:#f7f4ee;--paper:#f7f4ee;--paper-raised:#f9f7f2;--paper-sunk:#e9e3da;--paper-sunk-strong:#e1dbd2;--line:#dfdbd2;--line-soft:#e7e3db;--line-strong:#cfc9bf;--ink:#2a2b2f;--ink-2:#434247;--ink-3:#77746f;--ink-4:#a5a19a;--coral:#e2705a;--coral-deep:#d6624b;--coral-300:#f3bcae;--coral-200:#f7cec0;--coral-100:#fae0d6;--coral-50:#fcece5;--coral-ink:#7c2717;--code-bg:#2d2e32;--code-fg:#e9e6e0;--code-dim:#a3a7b8;--code-gutter:#7c7e87;--code-kw:#f08a6d;--font-sans:"Vazirmatn","Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--r-card:14px;--r-ctl:8px;--r-chip:7px;--shadow-card:0 1px 0 #ffffffbf inset,0 1px 2px #4a3a280a,0 6px 14px -8px #4a3a281f;--shadow-ctl:0 1px 0 #fffc inset,0 1px 2px #4a3a280d;--shadow-coral:0 1px 0 #ffffff38 inset,0 1px 2px #a03c2847,0 4px 10px -4px #d45f4873;--shadow-pop:0 1px 0 #ffffffbf inset,0 2px 4px #4a3a280f,0 30px 60px -22px #4a3a2873;--hover:#2b2c300d;--veil:#e9e3da9e;--stage:var(--paper-raised);--grid-line:#d2cabd;--on-coral:#fff;--grain:.55;--grain-blend:multiply}
+:root[data-theme="dark"]{--page:#0b0c0e;--paper:#141518;--paper-raised:#1a1b1f;--paper-sunk:#24262b;--paper-sunk-strong:#2e3036;--line:#26282d;--line-soft:#1f2125;--line-strong:#383b42;--ink:#f2f0eb;--ink-2:#c8c5bf;--ink-3:#908d87;--ink-4:#66645f;--coral:#e8694e;--coral-deep:#f07a5f;--coral-300:#94402e;--coral-200:#6e2f21;--coral-100:#4c2219;--coral-50:#271612;--coral-ink:#f6ab98;--code-bg:#101114;--shadow-card:0 1px 0 #ffffff09 inset,0 10px 24px -14px #000000b3;--shadow-ctl:0 1px 0 #ffffff0d inset,0 1px 2px #0006;--hover:#ffffff0f;--veil:#060708a8;--stage:#0f1012;--grid-line:#212327;--grain:.22;--grain-blend:soft-light}
+*{box-sizing:border-box}html,body{height:100%}body{background:var(--page);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;margin:0;font-size:15px;line-height:1.4;overflow-x:hidden}
+body:after{content:"";z-index:100;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");position:fixed;inset:0}
+h1,h2,h3,p,ul,ol,pre{margin:0}ul,ol{padding:0;list-style:none}button,input{font:inherit;color:inherit}button{cursor:pointer;background:0 0;border:0;padding:0}a{color:inherit;text-decoration:none}svg{display:block}.icon{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;width:1.25em;height:1.25em;flex:none}
+button,[role="button"]{min-height:36px}
+.app{display:grid;grid-template-rows:auto minmax(0,1fr);height:100vh;min-height:860px;min-width:1260px}
+.topbar{border-bottom:1px solid var(--line);align-items:center;height:64px;padding:0 16px 0 20px;display:flex}
+.brand{display:flex;align-items:center;gap:11px;flex:none}.brand__mark{width:32px;height:32px;border-radius:8px;background:var(--ink);color:var(--paper);display:grid;place-items:center;box-shadow:0 2px 5px -2px #2b2c3073;font-size:18px}.brand__name{letter-spacing:-.035em;font-size:19px;font-weight:800;white-space:nowrap}.brand__name mark{background:var(--coral-200);color:inherit;border-radius:.3em;padding:.05em .28em .1em}
+.nav{display:flex;align-items:center;gap:2px;margin-left:clamp(20px,4vw,72px);flex:none}.nav__item{display:flex;align-items:center;gap:10px;height:39px;padding:0 16px;border-radius:8px;font-size:14.8px;font-weight:650;letter-spacing:-.012em}.nav__item:hover{background:var(--hover)}.nav__item.is-active{background:var(--coral);color:#fff;box-shadow:var(--shadow-coral)}
+.topbar__tools{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-left:24px;min-width:0}
+.search{border:1px solid var(--line-strong);border-radius:8px;background:var(--paper-raised);height:40px;box-shadow:var(--shadow-ctl);flex:0 330px;display:flex;align-items:center;gap:10px;padding:0 9px 0 13px;cursor:pointer;min-width:150px}.search__hint{flex:1;color:var(--ink-2);font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}kbd{border:1px solid var(--line-strong);background:var(--paper);border-radius:6px;padding:3px 7px;font-size:11px;font-weight:560;color:var(--ink-2)}
+.tool-btn{border:1px solid var(--line-strong);border-radius:8px;background:var(--paper);height:40px;box-shadow:var(--shadow-ctl);display:flex;align-items:center;gap:7px;padding:0 10px 0 12px;font-size:13.5px;font-weight:650}.tool-btn--icon{width:40px;justify-content:center;padding:0}
+.author{display:flex;align-items:center;gap:9px;margin-left:6px;flex:none}.author__mark{width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:800}.author__text{line-height:1.2;display:grid}.author__text small{color:var(--ink-2);font-size:10.5px}.author__text b{font-size:12.5px}.author__text b span{background:var(--coral-200);padding:1px 4px;border-radius:4px}
+.workspace{display:grid;grid-template-columns:clamp(262px,14.2vw,276px) minmax(0,1fr) clamp(400px,23.5vw,440px);gap:14px;min-height:0;padding:12px 12px 10px 10px}
+.sidebar{display:flex;flex-direction:column;min-height:0}.sidebar__head{display:flex;align-items:center;gap:10px;height:42px;padding:0 8px 0 11px}.sidebar__head h2{font-size:16px;font-weight:750;letter-spacing:-.028em;flex:1}.sidebar__head span{color:var(--ink-3);font-size:12px}
+.tree{flex:1;overflow-y:auto;scrollbar-width:thin;margin-top:6px;padding-bottom:12px}.tree__row{display:flex;align-items:center;width:100%;height:35px;padding:0 6px 0 8px;border-radius:8px;text-align:left}.tree__row:hover{background:var(--hover)}.tree__caret{font-size:11px;margin-right:7px;transition:transform .15s;color:var(--ink-3)}.tree__chapter.is-open .tree__caret{transform:rotate(90deg)}.tree__folder{margin-right:9px;font-size:14px}.tree__title{flex:1;font-size:13.8px;font-weight:560;letter-spacing:-.016em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tree__count{color:var(--ink-3);font-size:12px}
+.tree__lessons{margin-left:15px;padding-left:11px;border-left:1px solid var(--line-strong);display:none}.tree__chapter.is-open .tree__lessons{display:grid;gap:1px;margin-top:2px;margin-bottom:7px}
+.tree__lesson{display:flex;align-items:center;gap:9px;min-height:33px;padding:5px 8px 5px 9px;border-radius:8px;font-size:13.8px;font-weight:500;color:var(--ink-2);width:100%;text-align:left}.tree__lesson:hover{background:var(--hover)}.tree__lesson.is-active{background:var(--coral-100);color:var(--ink);font-weight:620}
+.progress-pill{border:1px solid var(--line);background:var(--paper);height:46px;box-shadow:var(--shadow-card);border-radius:12px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:13px;flex:none}.meter{background:var(--paper-sunk-strong);border-radius:3px;height:6px;flex:1;overflow:hidden}.meter span{display:block;height:100%;background:var(--coral);width:0%}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow-card);position:relative}.panel{border:1px solid var(--line);background:var(--paper-raised);box-shadow:var(--shadow-ctl);border-radius:12px}
+.lesson{display:flex;flex-direction:column;gap:14px;min-width:0;min-height:0;padding:0 14px 14px}.lesson__head{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:13px 6px 0 8px;flex:none}.lesson__head h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.12}
+.trail{display:flex;align-items:center;gap:13px;flex:none}.trail__text{display:grid;justify-items:end;gap:4px}.trail__chapter{display:flex;gap:8px;align-items:center;font-size:14.5px;font-weight:650}.trail__num{background:var(--ink);color:var(--paper);border-radius:5px;padding:2px 5px 2px 6px;font-size:11px;letter-spacing:.06em}.trail__lesson{color:var(--ink-2);font-size:10.8px;letter-spacing:.06em}
+.system-view{background:var(--stage);flex:1;min-height:0;display:flex;overflow:hidden;isolation:isolate}.system-view__stage{flex:1;min-height:380px;margin:10px 8px;position:relative}.system-view__stage svg{width:100%;height:100%;position:absolute;inset:0}
+.steps{flex:none;padding:12px 16px 13px}.steps__head{display:flex;justify-content:space-between;align-items:baseline}.eyebrow{letter-spacing:.075em;text-transform:uppercase;font-size:11.5px;font-weight:680}.steps__head span{color:var(--ink-2);font-size:12.5px}
+.steps__track{display:flex;align-items:flex-start;gap:8px;margin-top:10px}.steps__rail{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(max-content,1fr);overflow-x:auto;scrollbar-width:none;padding:4px 0 2px;position:relative}.steps__rail::-webkit-scrollbar{display:none}
+.steps__item{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;padding:0 6px;min-width:90px}.steps__item:before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:2px;background:var(--line-strong)}.steps__item:first-child:before{display:none}.steps__num{width:27px;height:27px;border-radius:50%;border:1.5px solid var(--line-strong);background:var(--paper);display:grid;place-items:center;font-size:12.5px;font-weight:700;z-index:1}.steps__item.is-current .steps__num{background:var(--coral);border-color:var(--coral);color:#fff}.steps__item.is-done .steps__num{background:var(--coral-100);border-color:var(--coral);color:var(--coral-ink)}.steps__label{font-size:11.5px;color:var(--ink-3);text-align:center;line-height:1.25;max-width:130px}.steps__item.is-current .steps__label{color:var(--ink);font-weight:650}
+.rail{display:flex;flex-direction:column;gap:14px;min-width:0;min-height:0;overflow-y:auto;scrollbar-width:thin;padding:0 2px 10px}
+.step-card{flex:none;padding:15px 18px 16px 19px}.step-card__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.step-card__head span{font-size:11.5px;letter-spacing:.07em;font-weight:700;color:var(--ink-3)}.chip--tag{background:var(--coral-200);color:var(--coral-ink);border-radius:6px;height:22px;padding:0 8px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:inline-flex;align-items:center}
+.card__title{font-size:17.5px;font-weight:750;letter-spacing:-.032em;line-height:1.2}.step-card h2{font-size:20px;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}.step-card__body p{font-size:14.8px;line-height:1.55;color:var(--ink-2);margin-bottom:10px}.step-card__body p strong{color:var(--ink)}
+.note{background:var(--coral-50);border:1px solid var(--coral-200);border-radius:10px;padding:12px 14px;display:flex;gap:12px;margin-top:12px}.note__icon{width:28px;height:28px;border-radius:50%;background:var(--coral-200);display:grid;place-items:center;flex:none}.note b{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--coral-deep);display:block;margin-bottom:3px}.note p{font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.step-card__nav{display:flex;gap:10px;margin-top:16px}.btn{border:1px solid var(--line-strong);border-radius:8px;background:var(--paper);height:40px;box-shadow:var(--shadow-ctl);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 15px;font-size:14px;font-weight:620;flex:1}.btn--primary{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:var(--shadow-coral);flex:1.6}.btn--primary:hover{background:var(--coral-deep)}.btn:disabled{opacity:.55;cursor:default}
+.code-panel{flex:none;display:flex;flex-direction:column;overflow:hidden;min-height:140px}.code-panel__head{display:flex;align-items:center;gap:10px;height:51px;padding:5px 12px 0 20px}.code-panel__head .card__title{flex:1}
+.code{background:var(--code-bg);color:var(--code-fg);font-family:var(--font-mono);font-size:12.3px;line-height:19.8px;padding:10px 0 12px;overflow:auto;border-radius:0 0 14px 14px}.code__line{display:flex;border-left:2px solid transparent}.code.has-focus .code__line{opacity:.42}.code.has-focus .code__line.is-focus{opacity:1;border-left-color:var(--coral);background:#e2705a1c}.code__line i{width:31px;text-align:right;color:var(--code-gutter);font-style:normal;margin-right:23px;font-size:11.5px;flex:none;user-select:none}.code__line span{white-space:pre-wrap;flex:1;padding-right:14px}.tok-kw{color:var(--code-kw)}
+.facts-card{flex:none;padding:15px 14px 15px 19px}.facts-card dl{display:grid;gap:2px;margin:10px 0 0 -8px}.facts-card dl>div{display:flex;justify-content:space-between;align-items:center;min-height:34px;padding:3px 5px 3px 8px;border-radius:8px;font-size:14px}.facts-card dl>div.is-active{background:var(--coral-100);font-weight:620}.facts-card dt small{color:var(--ink-3);margin-left:7px;font-size:12px}.chip{background:var(--paper-sunk);height:24px;padding:0 8px;border-radius:7px;display:inline-flex;align-items:center;font-size:13.5px;font-weight:600}.facts-card dl>div.is-active .chip{background:var(--coral);color:#fff}.facts-card__note{color:var(--ink-2);margin-top:9px;font-size:13px}
+.finder{position:fixed;inset:0;background:var(--veil);backdrop-filter:blur(5px);z-index:90;display:flex;justify-content:center;align-items:flex-start;padding:70px 24px 24px}.finder[hidden]{display:none}.finder__panel{background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:14px;width:min(740px,100%);max-height:min(664px,calc(100vh - 140px));box-shadow:var(--shadow-pop);display:flex;flex-direction:column;overflow:hidden}.finder__field{display:flex;align-items:center;gap:12px;height:58px;padding:0 16px 0 20px;border-bottom:1px solid var(--line)}.finder__field input{flex:1;border:0;outline:0;background:transparent;font-size:16px}.finder__list{overflow-y:auto;padding:6px 10px 12px;flex:1}.finder__row{display:flex;gap:13px;align-items:center;min-height:54px;padding:8px 12px;border-radius:10px;border:1px solid transparent;width:100%;text-align:left}.finder__row.is-selected{border-color:var(--coral-300);background:var(--coral-50)}.finder__foot{border-top:1px solid var(--line);height:42px;display:flex;align-items:center;gap:18px;padding:0 18px;font-size:12px;color:var(--ink-3)}
+.langs{position:fixed;inset:0;z-index:92}.langs[hidden]{display:none}.langs__panel{position:fixed;top:72px;right:110px;width:360px;background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:14px;box-shadow:var(--shadow-pop);padding:14px}
+.toast{position:fixed;top:74px;left:50%;transform:translate(-50%,-10px);background:var(--ink);color:var(--paper);height:42px;border-radius:21px;display:flex;align-items:center;gap:10px;padding:0 18px 0 8px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:95}.toast.is-on{opacity:1;transform:translate(-50%)}
+.hamb{display:none}
+@media(max-width:1259px){.app{min-width:0;height:100dvh;min-height:0}.workspace{grid-template-columns:minmax(0,1fr) clamp(340px,37vw,430px);padding:12px}.sidebar{position:fixed;left:0;top:64px;bottom:0;width:280px;background:var(--page);z-index:70;padding:12px;transform:translateX(-105%);transition:.3s;box-shadow:var(--shadow-pop)}.app.is-menu-open .sidebar{transform:none}.hamb{display:flex}.nav__item:not(.is-active) span{display:none}.nav__item:not(.is-active){width:42px;justify-content:center;padding:0}}
+@media(max-width:1480px){.search kbd{display:none}.author__text{display:none}}
+@media(max-width:899px){.app{height:auto;display:block}.topbar{height:56px;padding:0 10px;gap:6px}.brand__name{display:none}.nav{display:none}.workspace{display:flex;flex-direction:column;padding:12px 12px 28px}.lesson{display:flex;flex-direction:column;padding:0}.rail{display:flex;flex-direction:column;overflow:visible;width:100%;padding:0}.lesson__head{flex-wrap:wrap}.system-view{height:clamp(280px,48dvh,540px);flex:none;position:sticky;top:8px;z-index:30}.search{flex:1;min-width:0}.search__hint{font-size:13px}#langBtn{width:44px;flex:none;justify-content:center;padding:0;overflow:hidden;font-size:12px}.author{display:none}.steps__rail{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible}.steps__item{min-width:0}.steps__item:before{display:none}.step-card__nav{flex-wrap:wrap}.step-card__nav .btn{flex:1 1 140px}}
+
+/* RTL / Persian overrides */
+.code{direction:ltr;text-align:left}
+.code__line i{margin-right:0;margin-left:23px}
+.search{padding:0 13px 0 9px}.search__hint{text-align:right}
+.nav{margin-left:0;margin-right:clamp(20px,4vw,72px)}
+.topbar__tools{margin-left:0;margin-right:24px}
+.author{margin-left:0;margin-right:6px}
+.tree__caret{margin-right:0;margin-left:7px}
+.tree__chapter.is-open .tree__caret{transform:rotate(-90deg)}
+.tree__folder{margin-right:0;margin-left:9px}
+.tree__row{text-align:right}
+.tree__lesson{text-align:right}
+.tree__lessons{margin-left:0;margin-right:15px;padding-left:0;padding-right:11px;border-left:0;border-right:1px solid var(--line-strong)}
+.trail__text{justify-items:start}
+.facts-card dl{margin:10px -8px 0 0}
+.facts-card dt small{margin-left:0;margin-right:7px}
+.finder__row{text-align:right}
+.langs__panel{right:auto;left:110px}
+.step-card{padding:15px 19px 16px 18px}
+.facts-card{padding:15px 19px 15px 14px}
+.code-panel__head{padding:5px 20px 0 12px}
+.toast{padding:0 8px 0 18px}
+.steps__item:before{left:auto;right:-50%}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <button class="tool-btn tool-btn--icon hamb" id="menuBtn" aria-label="منو">☰</button>
+    <div class="brand"><div class="brand__mark">⧉</div><div class="brand__name">Algo <mark>Lab</mark></div></div>
+    <nav class="nav" id="mainNav">
+      <button class="nav__item is-active" data-tab="Learn">📖 <span>یادگیری</span></button>
+      <button class="nav__item" data-tab="Practice">⌨ <span>تمرین</span></button>
+      <button class="nav__item" data-tab="Cheatsheets">📄 <span>برگه‌های مرجع</span></button>
+      <button class="nav__item" data-tab="Challenges">🏆 <span>چالش‌ها</span></button>
+      <button class="nav__item" data-tab="Progress">📊 <span>پیشرفت</span></button>
+    </nav>
+    <div class="topbar__tools">
+      <button class="search" id="searchBtn"><span>🔍</span><span class="search__hint">جستجو در مباحث، الگوریتم‌ها...</span><kbd>Ctrl K</kbd></button>
+      <button class="tool-btn" id="langBtn">🌐 FA ▾</button>
+      <button class="tool-btn tool-btn--icon" id="themeBtn" aria-label="تغییر تم">🌙</button>
+      <div class="author"><div class="author__mark">𝕏</div><div class="author__text"><small>طراحی‌شده توسط</small><b><span>@DilumSanjaya</span></b></div></div>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar__head"><span>📁</span><h2>دوره</h2><span>۸۶ درس</span></div>
+      <div class="tree" id="tree"></div>
+      <div class="progress-pill"><strong>پیشرفت</strong><span class="meter"><span id="progBar"></span></span><span id="progCount">0 / 86</span></div>
+    </aside>
+
+    <main class="lesson">
+      <div class="lesson__head">
+        <h1 id="lessonTitle">Big-O Notation</h1>
+        <div class="trail"><div class="trail__text"><div class="trail__chapter"><span class="trail__num" id="trailNum">01</span> <span id="trailChapter">Foundations</span></div><div class="trail__lesson" id="trailLesson">LESSON 1 OF 4</div></div>
+        <svg width="72" height="42" viewBox="0 0 72 42"><g><rect x="2" y="26" width="18" height="10" rx="2" fill="#fff" stroke="#2a2b2f"/><rect x="20" y="18" width="18" height="10" rx="2" fill="#f7cec0" stroke="#2a2b2f"/><rect x="38" y="10" width="18" height="10" rx="2" fill="#e2705a" stroke="#2a2b2f"/><rect x="52" y="2" width="18" height="10" rx="2" fill="#fff" stroke="#2a2b2f"/></g></svg>
+        </div>
+      </div>
+
+      <div class="card system-view"><div class="system-view__stage" id="stage"></div></div>
+
+      <div class="card steps">
+        <div class="steps__head"><span class="eyebrow">در این درس</span><span style="display:flex;gap:6px;align-items:center"><kbd>←</kbd><kbd>→</kbd> برای جابه‌جایی بین گام‌ها &nbsp; <span id="stepPos">گام ۱ از ۷</span></span></div>
+        <div class="steps__track"><div class="steps__rail" id="stepsRail"></div></div>
+      </div>
+    </main>
+
+    <aside class="rail" id="rail">
+      <section class="card step-card" id="stepCard"></section>
+      <section class="card code-panel"><div class="code-panel__head"><span style="color:var(--coral)">☰</span><span class="card__title">Pseudocode</span></div><div class="code" id="codeBox"></div></section>
+      <section class="card facts-card" id="factsCard"></section>
+    </aside>
+  </div>
+</div>
+
+<div class="finder" id="finder" hidden><div class="finder__panel"><label class="finder__field">🔍 <input id="finderInput" placeholder="جستجو در مباحث، الگوریتم‌ها..." autocomplete="off"></label><div class="finder__list" id="finderList"></div><div class="finder__foot"><span><kbd>↑↓</kbd> جابه‌جایی</span><span><kbd>↵</kbd> باز کردن</span><span><kbd>esc</kbd> بستن</span><span style="margin-left:auto" id="finderCount"></span></div></div></div>
+<div class="langs" id="langs" hidden><div class="langs__panel"><div style="font-weight:700;margin-bottom:10px">زبان</div><div id="langList" style="display:grid;gap:4px"></div></div></div>
+<div class="toast" id="toast"><span style="background:var(--coral);width:26px;height:26px;border-radius:50%;display:grid;place-items:center">✓</span><span id="toastText"></span></div>
+
+<script>
+const CHAPTERS=[
+{title:"مبانی",lessons:["Big-O Notation","Memory & Pointers","Recursion","Divide & Conquer"]},
+{title:"آرایه‌ها و رشته‌ها",lessons:["Arrays","Dynamic Arrays","Two Pointers","Sliding Window","Prefix Sums","Maximum Subarray","Merge Intervals","Pattern Matching","KMP Search","2D Arrays"]},
+{title:"لیست‌های پیوندی",lessons:["Singly Linked Lists","Doubly Linked Lists","Fast & Slow Pointers","Reversing a List","Merging Sorted Lists","LRU Cache"]},
+{title:"پشته‌ها و صف‌ها",lessons:["Stacks","Balanced Brackets","Queues","Circular Buffer","Deques","Monotonic Stack","Monotonic Queue"]},
+{title:"Hashing",lessons:["Hash Tables","Collision Handling","Resizing & Rehashing","Sets & Maps","Bloom Filters"]},
+{title:"درخت‌ها",lessons:["Binary Trees","Tree Traversals","Lowest Common Ancestor","Binary Search Trees","BST Deletion","Balanced Trees","Tries","Segment Trees"]},
+{title:"Heap ها",lessons:["Binary Heaps","Building a Heap","Priority Queues","Top-K Problems","Median of a Stream","Heap Sort"]},
+{title:"گراف‌ها",lessons:["Graph Representation","Breadth-First Search","Depth-First Search","Connected Components","Cycle Detection","Topological Sort","Strongly Connected Components","Shortest Paths","Bellman–Ford","Floyd–Warshall","Union-Find","Minimum Spanning Trees","Prim's Algorithm"]},
+{title:"مرتب‌سازی و جستجو",lessons:["Binary Search","Binary Search on the Answer","Simple Sorts","Merge Sort","Quick Sort","Quickselect","Counting & Radix Sort","Stability & the Sorting Limit"]},
+{title:"الگوریتم‌های Greedy",lessons:["Interval Scheduling","Huffman Coding","When Greedy Fails"]},
+{title:"Backtracking",lessons:["Subsets","Permutations","N-Queens","Solving a Maze"]},
+{title:"برنامه‌نویسی پویا",lessons:["Memoization","Tabulation","Grid Paths","Knapsack","Coin Change","Longest Increasing Subsequence","Sequences","Edit Distance"]},
+{title:"دستکاری Bit ها",lessons:["Bits & Masks","Bit Tricks","Bitsets"]},
+{title:"مسائل سخت",lessons:["P vs NP"]},
+];
+const PSEUDO_BIGO=`first(a):
+    return a[0]
+
+search(a, x):
+    repeat: look at the middle, keep one half
+
+total(a):
+    for each item in a:
+        add it on
+
+any_pair(a):
+    for each item in a:
+        for each other item in a:
+            compare the two`;
+function factsBigO(n,focus){
+  const rows=[{label:"O(1)",detail:"ثابت",value:1,id:"one"},{label:"O(log n)",detail:"لگاریتمی",value:Math.round(Math.log2(n)),id:"log"},{label:"O(n)",detail:"خطی",value:n,id:"lin"},{label:"O(n²)",detail:"درجه دوم",value:n*n,id:"quad"}];
+  return {title:"گام‌های برداشته‌شده",rows:rows.map(r=>({...r,active:r.id===focus})),note:`تعداد گام‌ها برای n = ${n} داده.`}
+}
+const BIGO_STEPS=[
+{label:"گام‌ها را بشمار، نه ثانیه‌ها را",kind:"مفهوم",body:[`سرعت یک الگوریتم چقدر است؟ ثانیه به ماشین بستگی دارد. پس به‌جای آن <strong>گام‌ها</strong> را می‌شماریم و می‌پرسیم این شمارش چطور به اندازه‌ی ورودی، <em>n</em>، بستگی دارد.`,`اینجا چهار نوع الگوریتم روی ۲ داده کار می‌کنند. هر بلوک یک گام کاری است. تقریباً شبیه هم به نظر می‌رسند.`],note:{title:"توجه",text:"روی ورودی‌های کوچک تقریباً همه‌چیز سریع است. تفاوت‌ها وقتی معلوم می‌شوند که n بزرگ شود."},state:{n:2},facts:factsBigO(2)},
+{label:"ورودی را دو برابر کن",kind:"رشد",body:[`به‌جای ۲ داده، ۴ داده به آن‌ها بده. یک سکو اصلاً تغییر نکرده است. یکی فقط یک بلوک اضافه کرده. یکی دو برابر شده. یکی چهار برابر شده است.`,`Big-O دقیقاً همین واکنش به رشد را توصیف می‌کند.`],state:{n:4},facts:factsBigO(4)},
+{label:"دوباره دو برابرش کن",kind:"رشد",body:[`۸ داده. همان اتفاق دوباره تکرار می‌شود؛ هر کدام به شیوه‌ی خودش رشد می‌کند: اصلاً رشد نمی‌کند، یکی اضافه می‌کند، دو برابر می‌شود، چهار برابر می‌شود.`,`Big-O <strong>شکل رشد</strong> را نام‌گذاری می‌کند و جزئیات را نادیده می‌گیرد. 2n گام و n + 5 گام هر دو فقط O(n) هستند.`],note:{title:"این‌طور بخوانش",text:"«O(n)» یعنی «کار هم‌گام با n رشد می‌کند.»"},state:{n:8},facts:factsBigO(8)},
+{label:"O(1): ثابت",kind:"ثابت",body:[`کار اصلاً به n بستگی ندارد. خواندن یک خانه‌ی آرایه با index آن، یا push کردن روی یک stack: یک گام، چه برای ۸ داده چه برای ۸ میلیون داده.`,`بهتر از این نمی‌شود.`],state:{n:8,focus:"one"},facts:factsBigO(8,"one"),lines:[1,2]},
+{label:"O(log n): لگاریتمی",kind:"لگاریتمی",body:[`هر گام نیمی از باقی‌مانده را دور می‌اندازد، درست مثل binary search. دو برابر کردن ورودی فقط <strong>یک</strong> گام دیگر اضافه می‌کند.`,`یک میلیون داده حدود ۲۰ گام می‌خواهد. یک میلیارد داده حدود ۳۰ گام.`],state:{n:8,focus:"log"},facts:factsBigO(8,"log"),lines:[4,5]},
+{label:"O(n): خطی",kind:"خطی",body:[`هر داده یک بار دیده می‌شود: جمع زدن یک لیست، یا جستجو در لیستی که مرتب نیست. ورودی دو برابر، کار دو برابر.`,`اغلب این بهترین حالت ممکن است، چون نمی‌توانی داده‌هایی را که هرگز ندیده‌ای از قلم بیندازی.`],state:{n:8,focus:"lin"},facts:factsBigO(8,"lin"),lines:[7,8,9]},
+{label:"O(n²): درجه دوم",kind:"درجه دوم",body:[`هر داده با هر داده‌ی دیگر مقایسه می‌شود: یک حلقه داخل یک حلقه. ورودی دو برابر، <strong>چهار برابر</strong> کار.`,`برای ۸ داده اشکالی ندارد. برای یک میلیون داده می‌شود یک تریلیون گام، و معمولاً اولین چیزی است که ارزش درست کردن دارد.`],note:{title:"قاعده‌ی سرانگشتی",text:"بخش زیادی از این دوره تبدیل یک ایده‌ی O(n²) به O(n) یا O(n log n) است."},state:{n:8,focus:"quad"},facts:factsBigO(8,"quad"),lines:[11,12,13,14]},
+];
+const GENERIC_CODE={
+"Memory & Pointers":`x ← 42
+p ← the address of x
+read the value at p        // 42
+the value at p ← 7         // x is now 7
+q ← p
+p ← nothing`,
+"Recursion":`fact(n):
+    if n = 1:
+        return 1              // base case
+    return n × fact(n − 1)    // smaller copy`,
+"Divide & Conquer":`solve(problem):
+    if problem is small enough:
+        return its answer directly       // base case
+    split problem into smaller pieces    // divide
+    solve each piece the same way        // conquer
+    return their answers, put together   // combine`
+};
+function genericSteps(title){
+ if(title==="Memory & Pointers") return [
+  {label:"خانه‌های شماره‌دار",kind:"مفهوم",body:[`حافظه‌ی کامپیوتر یک ردیف طولانی از خانه‌هاست. هر خانه یک شماره دارد، یعنی <strong>address</strong> آن، و می‌تواند یک مقدار نگه دارد.`,`اینجا هفت تا از آن‌ها را می‌بینی، در address های ۱۰۰ تا ۱۰۶. حافظه‌ی واقعی میلیاردها خانه دارد.`],note:{title:"تصورش کن",text:"یک خیابان پر از خانه. address می‌گوید کجا؛ خانه نگه می‌دارد چه چیزی."},state:{n:2},facts:{title:"چه کسی چه چیزی دارد",rows:[],note:"هنوز چیزی ذخیره نشده است."}},
+  {label:"متغیر یعنی یک خانه‌ی نام‌دار",kind:"ذخیره",body:[`نوشتن <strong>x ← 42</strong> یک خانه‌ی خالی انتخاب می‌کند، 42 را داخل آن می‌گذارد و به خاطر می‌سپارد که <em>x</em> یعنی همان خانه.`],state:{n:4},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"x",detail:"در 102",value:42,active:true}],note:""},lines:[1]},
+  {label:"Pointer یک address نگه می‌دارد",kind:"اشاره",body:[`یک خانه می‌تواند هر عددی را نگه دارد و address هم یک عدد است. پس یک خانه می‌تواند address خانه‌ی دیگری را نگه دارد. این همان <strong>pointer</strong> است.`],state:{n:4},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"x",detail:"در 102",value:42},{label:"p",detail:"در 105",value:102,active:true}],note:""},lines:[2]},
+  {label:"Pointer را دنبال کن",kind:"خواندن",body:[`برای استفاده از یک pointer باید آن را <strong>دنبال</strong> کنی: address ای را که نگه داشته بخوان، به آن خانه برو و چیزی را که آنجاست بردار.`],state:{n:8,focus:"lin"},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"x",detail:"در 102",value:42,active:true},{label:"p",detail:"در 105",value:102}],note:""},lines:[3]},
+  {label:"از طریق آن بنویس",kind:"نوشتن",body:[`می‌توانی از طریق یک pointer هم ذخیره کنی. گذاشتن ۷ «در p» به خانه‌ی ۱۰۲ می‌رود و چیزی را که آنجاست جایگزین می‌کند.`],note:{title:"مواظب باش",text:"این‌طوری است که یک بخش از برنامه داده‌ای را عوض می‌کند که بخش دیگری فکر می‌کرد مال خودش است."},state:{n:8,focus:"quad"},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"x",detail:"در 102",value:7,active:true}],note:""},lines:[4]},
+  {label:"دو pointer، یک خانه",kind:"کپی",body:[`کپی کردن یک pointer، <em>address</em> را کپی می‌کند، نه چیزی را که به آن اشاره می‌کند. <strong>q ← p</strong> به q هم عدد 102 را می‌دهد.`],state:{n:8},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"x",detail:"در 102",value:7},{label:"q",detail:"در 100",value:102,active:true}],note:""},lines:[5]},
+  {label:"اشاره به هیچ‌جا",kind:"Null",body:[`یک pointer مجبور نیست به جایی اشاره کند. یک مقدار ویژه، که معمولاً <strong>null</strong> نامیده می‌شود، یعنی «هیچ‌چیز».`],note:{title:"مواظب باش",text:"دنبال کردن یک null pointer خطاست. همین است که یک linked list را به پایان می‌رساند."},state:{n:8},facts:{title:"چه کسی چه چیزی دارد",rows:[{label:"p",detail:"در 105",value:"null",active:true}],note:""},lines:[6]},
+ ];
+ if(title==="Recursion") return [
+  {label:"تابعی که خودش را صدا می‌زند",kind:"مفهوم",body:[`فاکتوریل ۴ می‌شود 4 × 3 × 2 × 1. اما 3 × 2 × 1 فاکتوریل ۳ است، پس <strong>fact(4) = 4 × fact(3)</strong>.`],note:{title:"تصورش کن",text:"پرسیدن سؤالی که جوابش به همان سؤال نیاز دارد، اما درباره‌ی چیزی کوچک‌تر."},state:{n:2},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(4)",active:true}],note:""},lines:[1,4]},
+  {label:"فراخوانی‌ها روی هم انباشته می‌شوند",kind:"فراخوانی",body:[`fact(4) تا وقتی fact(3) را نداند نمی‌تواند تمام شود، پس آن را صدا می‌زند و منتظر می‌ماند. هر فراخوانی یک frame روی بقیه اضافه می‌کند.`],state:{n:4},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(2)",active:true}],note:""},lines:[4]},
+  {label:"Base case",kind:"Base case",body:[`fact(1) فرق دارد. به فراخوانی دیگری نیاز ندارد: جواب به‌سادگی ۱ است. این همان <strong>base case</strong> است.`],note:{title:"یادت باشد",text:"هر recursion به یک base case نیاز دارد و هر فراخوانی باید به سمت آن حرکت کند."},state:{n:8,focus:"one"},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(1)",active:true}],note:""},lines:[2,3]},
+  {label:"برگرداندن جواب",kind:"Return",body:[`fact(1) عدد ۱ را برمی‌گرداند و frame آن از روی stack برداشته می‌شود. حالا fact(2) می‌تواند کار کوچک خودش را بکند: 2 × 1 = 2.`],state:{n:8,focus:"log"},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(2)",active:true}],note:""},lines:[4]},
+  {label:"باز شدن فراخوانی‌ها",kind:"Return",body:[`فراخوانی‌ها از stack بالا رفتند؛ جواب‌ها در جهت مخالف از آن پایین برمی‌گردند.`],note:{title:"توجه",text:"آخرین فراخوانی، اولین تمام‌شونده است. Call stack یک stack است."},state:{n:8,focus:"lin"},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(3)",active:true}],note:""},lines:[4]},
+  {label:"جواب",kind:"نتیجه",body:[`fact(3) عدد ۶ را به فراخوانی اول برمی‌گرداند: 4 × 6 = <strong>24</strong>.`],state:{n:8,focus:"quad"},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(4)",active:true}],note:"fact(4) = 24"},lines:[4]},
+  {label:"بدون base case",kind:"مواظب باش",body:[`base case را بردار و fact(1) صدا می‌زند fact(0) را، که صدا می‌زند fact(−1) را، و همین‌طور ادامه پیدا می‌کند. یک <strong>stack overflow</strong>.`],note:{title:"مواظب باش",text:"recursion عمیق حتی با base case هم می‌تواند overflow شود."},state:{n:8},facts:{title:"چه کسی منتظر است",rows:[{label:"در حال اجرا",value:"fact(−1)",active:true}],note:"frame ها بیشتر از جایی که stack دارد."},lines:[4]},
+ ];
+ return [
+  {label:"بزرگ‌تر از آن است که یک‌جا حل شود",kind:"مفهوم",body:[`بعضی مسئله‌ها در اندازه‌ی کامل سخت‌اند و وقتی کوچک می‌شوند آسان. <strong>Divide and conquer</strong> یک دستور است: تقسیم کن، حل کن، به هم بچسبان.`],state:{n:2},facts:{title:"شکل کار",rows:[{label:"تکه‌های پایین",value:1,active:true}],note:""}},
+  {label:"تقسیم",kind:"گام",body:[`مسئله را به مسئله‌های کوچک‌تری از همان جنس ببُر. بیشتر وقت‌ها یعنی از وسط نصف کردن.`],state:{n:4},facts:{title:"شکل کار",rows:[{label:"تکه‌های پایین",value:2,active:true}],note:""},lines:[4]},
+  {label:"تا وقتی بدیهی شود",kind:"گام",body:[`هر نیمه دوباره نصف می‌شود، تا وقتی تکه‌ها به اندازه‌ی ۱ برسند: همان <strong>base case</strong>.`],state:{n:8},facts:{title:"شکل کار",rows:[{label:"تکه‌های پایین",value:8,active:true}],note:""},lines:[2,3,4,5]},
+  {label:"در مسیر برگشت ترکیب کن",kind:"گام",body:[`حالا جواب‌ها به سمت بالا حرکت می‌کنند. دو تکه‌ی حل‌شده به هم چسبانده می‌شوند تا جواب بالای سرشان ساخته شود.`],state:{n:8,focus:"lin"},facts:{title:"شکل کار",rows:[{label:"تکه‌های پایین",value:8,active:true}],note:"در merge sort، این چسباندن همان merge است."},lines:[5,6]},
+  {label:"سطح‌به‌سطح جمع بزن",kind:"هزینه",body:[`هر طور که ۸ را ببُری، اندازه‌های یک سطح باز هم جمعشان ۸ می‌شود. هر سطح n هزینه دارد و log n + 1 سطح وجود دارد: حدود n log n.`],state:{n:8,focus:"quad"},facts:{title:"شکل کار",rows:[{label:"مجموع",value:"32",active:true}],note:""}},
+ ];
+}
+let currentLesson="Big-O Notation", currentChapterIdx=0, currentLessonIdx=0, stepIdx=0, doneSet=new Set();
+function getSteps(){ if(currentLesson==="Big-O Notation") return BIGO_STEPS; return genericSteps(currentLesson); }
+function getPseudo(){ if(currentLesson==="Big-O Notation") return PSEUDO_BIGO; return GENERIC_CODE[currentLesson]||PSEUDO_BIGO; }
+
+// Tree render
+function renderTree(){
+  const tree=document.getElementById('tree'); tree.innerHTML='';
+  CHAPTERS.forEach((ch,ci)=>{
+    const div=document.createElement('div'); div.className='tree__chapter'+(ci===0?' is-open':'')+(ci===currentChapterIdx?' is-current':'');
+    const btn=document.createElement('button'); btn.className='tree__row'; btn.innerHTML=`<span class="tree__caret">›</span><span class="tree__folder">${ci===currentChapterIdx?'🟧':'📁'}</span><span class="tree__title">${String(ci+1).padStart(2,'0')}. ${ch.title}</span><span class="tree__count">0/${ch.lessons.length}</span>`;
+    btn.onclick=()=>{div.classList.toggle('is-open')};
+    div.appendChild(btn);
+    const ul=document.createElement('ul'); ul.className='tree__lessons';
+    ch.lessons.forEach((ls,li)=>{
+      const item=document.createElement('li'); const a=document.createElement('button'); a.className='tree__lesson'+(ls===currentLesson?' is-active':''); a.innerHTML=`<span>📄</span><span>${ls}</span>`; a.onclick=()=>{selectLesson(ci,li,ls)}; item.appendChild(a); ul.appendChild(item);
+    });
+    div.appendChild(ul); tree.appendChild(div);
+  });
+}
+function selectLesson(ci,li,title){
+  // Only foundations have full content; others show toast + still switch title with generic BigO steps as placeholder lesson preview
+  currentChapterIdx=ci; currentLessonIdx=li; currentLesson=title; stepIdx=0;
+  if(!["Big-O Notation","Memory & Pointers","Recursion","Divide & Conquer"].includes(title)){
+    // create a generic lesson using BigO steps but retitled - keep honest: show coming content via same step engine with note
+    showToast(`در حال باز کردن ${title} — پیش‌نمایش این درس با همان گام‌های Big-O نمایش داده می‌شود`);
+  }
+  document.getElementById('app').classList.remove('is-menu-open');
+  renderAll();
+}
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastText').textContent=msg;t.classList.add('is-on');setTimeout(()=>t.classList.remove('is-on'),2600)}
+
+// Isometric scene
+function isoBlock(cx,cy,w,h,label,steps,dim,active){
+  const hw=w/2, hd=w*0.28;
+  const topY=cy-h;
+  const top=`${cx},${topY-hd} ${cx+hw},${topY} ${cx},${topY+hd} ${cx-hw},${topY}`;
+  const left=`${cx-hw},${topY} ${cx},${topY+hd} ${cx},${topY+hd+h} ${cx-hw},${topY+h}`;
+  const right=`${cx},${topY+hd} ${cx+hw},${topY} ${cx+hw},${topY+h} ${cx},${topY+hd+h}`;
+  // small cubes on top
+  let cubes=''; const cols=Math.min(4, Math.max(1, Math.ceil(Math.sqrt(Math.min(steps,16))))); const rows=Math.ceil(Math.min(steps,16)/cols);
+  let idx=0;
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){ if(idx>=Math.min(steps,16)) break; const ox=(c-(cols-1)/2)*22 + (r-(rows-1)/2)*10; const oy=(r-(rows-1)/2)*8 - (c-(cols-1)/2)*4; const sx=cx+ox, sy=topY-6+oy; cubes+=`<g transform="translate(${sx},${sy})"><polygon points="0,-7 10,0 0,7 -10,0" fill="#fff" stroke="#2a2b2f" stroke-width="1.2"/><polygon points="-10,0 0,7 0,14 -10,7" fill="#f2eee7" stroke="#2a2b2f" stroke-width="1"/><polygon points="0,7 10,0 10,7 0,14" fill="#e2705a" opacity="0.9" stroke="#2a2b2f" stroke-width="1"/></g>`; idx++; }
+  const opacity=dim?0.28:1;
+  const topFill=active?'#f3bcae':'#faf8f3';
+  return `<g opacity="${opacity}">
+    <polygon points="${left}" fill="#2a2b2f" stroke="#2a2b2f" stroke-width="1.5"/>
+    <polygon points="${right}" fill="#f3a08c" stroke="#2a2b2f" stroke-width="1.2"/>
+    <defs><pattern id="hatch-${label.replace(/[^a-z]/gi,'')}" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#fbe2d8"/><line x1="0" y1="0" x2="0" y2="8" stroke="#e2705a" stroke-width="3"/></pattern></defs>
+    <polygon points="${right}" fill="url(#hatch-${label.replace(/[^a-z]/gi,'')})" opacity="0.85"/>
+    <polygon points="${top}" fill="${topFill}" stroke="#2a2b2f" stroke-width="1.6"/>
+    ${cubes}
+    <text x="${cx-hw+14}" y="${topY+hd+h/2}" fill="#fff" font-size="15" font-weight="700" font-family="Inter">${label}</text>
+    <g transform="translate(${cx+hw+12},${topY+hd+h/2-13})"><rect width="74" height="26" rx="7" fill="#2a2b2f"/><text x="37" y="17" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">${steps} گام</text></g>
+  </g>`;
+}
+function renderScene(){
+  const steps=getSteps(); const st=steps[stepIdx].state||{n:2}; const n=st.n||2; const focus=st.focus||null;
+  const s1=1, sLog=Math.max(1,Math.round(Math.log2(n))), sLin=n, sQuad=n*n;
+  const blocks=[
+    {id:"one",label:"O(1)",steps:s1,cx:210,cy:330,w:110,h:52},
+    {id:"log",label:"O(log n)",steps:sLog,cx:340,cy:265,w:120,h:62},
+    {id:"lin",label:"O(n)",steps:sLin,cx:475,cy:195,w:130,h:72},
+    {id:"quad",label:"O(n²)",steps:sQuad,cx:610,cy:115,w:145,h:88},
+  ];
+  // grid background
+  let grid=''; for(let i=-10;i<22;i++){ grid+=`<path d="M ${i*36} 0 L ${i*36+220} 110" stroke="var(--grid-line)" stroke-width="1" fill="none" opacity="0.7"/><path d="M ${i*36} 456 L ${i*36+220} 346" stroke="var(--grid-line)" stroke-width="1" fill="none" opacity="0.5"/>`; }
+  // Actually draw diamond grid via pattern lines simpler: use two sets
+  let lines=''; for(let x=-400;x<900;x+=28){ lines+=`<line x1="${x}" y1="0" x2="${x+228}" y2="456" stroke="#d2cabd" stroke-width="0.7" opacity="0.6"/><line x1="${x+228}" y1="0" x2="${x}" y2="456" stroke="#d2cabd" stroke-width="0.7" opacity="0.6"/>`; }
+  const svg=`<svg viewBox="0 0 760 456" preserveAspectRatio="xMidYMid meet" role="img" aria-label="نمودار ایزومتریک رشد مقدار کار">
+    <rect width="760" height="456" fill="transparent"/>${lines}
+    ${blocks.map(b=>isoBlock(b.cx,b.cy,b.w,b.h,b.label,b.steps, focus&&focus!==b.id, focus===b.id)).join('')}
+    <g><rect x="335" y="18" width="86" height="36" rx="8" fill="#e2705a"/><text x="378" y="41" text-anchor="middle" fill="#fff" font-size="16" font-weight="600">n = ${n}</text><line x1="395" y1="54" x2="585" y2="92" stroke="#e2705a" stroke-width="2"/><circle cx="585" cy="92" r="5" fill="#e2705a"/></g>
+  </svg>`;
+  document.getElementById('stage').innerHTML=svg;
+}
+function renderStepCard(){
+  const steps=getSteps(); const s=steps[stepIdx];
+  const nextLabel= stepIdx<steps.length-1 ? steps[stepIdx+1].label : "پایان درس";
+  document.getElementById('stepCard').innerHTML=`
+    <div class="step-card__head"><span>گام ${stepIdx+1} از ${steps.length}</span><span class="chip--tag">${s.kind}</span></div>
+    <h2>${s.label}</h2>
+    <div class="step-card__body">${s.body.map(p=>`<p>${p}</p>`).join('')}</div>
+    ${s.note?`<div class="note"><div class="note__icon">💡</div><div><b>${s.note.title}</b><p>${s.note.text}</p></div></div>`:''}
+    <div class="step-card__nav"><button class="btn" id="backBtn" ${stepIdx===0?'disabled':''}>→ قبلی</button><button class="btn btn--primary" id="nextBtn">${stepIdx<steps.length-1?`بعدی: ${nextLabel}`:'✓ پایان درس'} ←</button></div>
+  `;
+  document.getElementById('backBtn').onclick=()=>{ if(stepIdx>0){stepIdx--; renderAll();} };
+  document.getElementById('nextBtn').onclick=()=>{ if(stepIdx<steps.length-1){stepIdx++; renderAll();} else { doneSet.add(currentLesson); document.getElementById('progBar').style.width=(doneSet.size/86*100)+'%'; document.getElementById('progCount').textContent=`${doneSet.size} / 86`; showToast(`درس تمام شد — ${currentLesson}`);} };
+}
+function renderCode(){
+  const lines=getPseudo().split('\n'); const steps=getSteps(); const focusLines=steps[stepIdx].lines||[];
+  const box=document.getElementById('codeBox'); box.className='code'+(focusLines.length?' has-focus':'');
+  box.innerHTML=lines.map((ln,i)=>{
+    const num=i+1; const isF=focusLines.includes(num);
+    let html=ln.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    html=html.replace(/\b(return|repeat|for|each|if)\b/g,'<span class="tok-kw">$1</span>');
+    // indent via spaces count
+    const indent=(ln.match(/^ */)[0].length)/4;
+    return `<div class="code__line ${isF?'is-focus':''}" style="--indent:${indent}"><i>${num}</i><span>${html||' '}</span></div>`;
+  }).join('');
+}
+function renderFacts(){
+  const f=getSteps()[stepIdx].facts; const el=document.getElementById('factsCard');
+  if(!f){el.innerHTML=''; return;}
+  el.innerHTML=`<div class="card__title">${f.title}</div><dl>${(f.rows||[]).map(r=>`<div class="${r.active?'is-active':''}"><dt>${r.label}${r.detail?`<small>${r.detail}</small>`:''}</dt><dd><span class="chip">${r.value}</span></dd></div>`).join('')}</dl>${f.note?`<p class="facts-card__note">${f.note}</p>`:''}`;
+}
+function renderStepsRail(){
+  const steps=getSteps(); const rail=document.getElementById('stepsRail'); rail.innerHTML='';
+  steps.forEach((s,i)=>{
+    const b=document.createElement('button'); b.className='steps__item'+(i===stepIdx?' is-current':'')+(i<stepIdx?' is-done':''); b.innerHTML=`<span class="steps__num">${i<stepIdx?'✓':i+1}</span><span class="steps__label">${s.label}</span>`; b.onclick=()=>{stepIdx=i; renderAll();}; rail.appendChild(b);
+  });
+  document.getElementById('stepPos').textContent=`گام ${stepIdx+1} از ${steps.length}`;
+}
+function renderAll(){
+  document.getElementById('lessonTitle').textContent=currentLesson;
+  document.getElementById('trailChapter').textContent=CHAPTERS[currentChapterIdx].title;
+  document.getElementById('trailNum').textContent=String(currentChapterIdx+1).padStart(2,'0');
+  document.getElementById('trailLesson').textContent=`درس ${currentLessonIdx+1} از ${CHAPTERS[currentChapterIdx].lessons.length}`;
+  renderTree(); renderScene(); renderStepCard(); renderCode(); renderFacts(); renderStepsRail();
+}
+// Nav tabs
+document.querySelectorAll('.nav__item').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav__item').forEach(x=>x.classList.remove('is-active')); b.classList.add('is-active'); if(b.dataset.tab!=='Learn') showToast(`${b.textContent.trim()} — در نسخه‌ی اصلی این بخش نمای خودش را باز می‌کند؛ اینجا درس یادگیری نمایش داده می‌شود`);});
+// Theme
+document.getElementById('themeBtn').onclick=()=>{const cur=document.documentElement.dataset.theme==='dark'?'light':'dark'; document.documentElement.dataset.theme=cur; document.getElementById('themeBtn').textContent=cur==='dark'?'☀️':'🌙'; renderScene();};
+if(matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.dataset.theme='dark'; document.getElementById('themeBtn').textContent='☀️';}
+// Menu
+document.getElementById('menuBtn').onclick=()=>document.getElementById('app').classList.toggle('is-menu-open');
+// Finder
+const allLessons=CHAPTERS.flatMap((c,ci)=>c.lessons.map((t,li)=>({t,ci,li,chapter:c.title})));
+function openFinder(){document.getElementById('finder').hidden=false; document.getElementById('finderInput').value=''; renderFinder(''); setTimeout(()=>document.getElementById('finderInput').focus(),30);}
+function renderFinder(q){
+  const list=document.getElementById('finderList'); const filtered=allLessons.filter(x=>x.t.toLowerCase().includes(q.toLowerCase()));
+  document.getElementById('finderCount').textContent=`${filtered.length} درس`;
+  list.innerHTML=filtered.slice(0,30).map((x,i)=>`<button class="finder__row ${i===0?'is-selected':''}" data-ci="${x.ci}" data-li="${x.li}" data-t="${x.t}"><span style="width:34px;height:34px;border:1px solid var(--line-strong);border-radius:8px;display:grid;place-items:center;background:var(--paper)">📄</span><span style="flex:1"><b style="display:block;font-size:14.5px">${x.t}</b><small style="color:var(--ink-3)">${x.chapter}</small></span><span style="color:var(--ink-3);font-size:12px">${String(x.ci+1).padStart(2,'0')} · ${x.li+1}</span></button>`).join('')||`<div style="text-align:center;padding:40px;color:var(--ink-3)"><b style="color:var(--ink)">درسی پیدا نشد</b><br>«binary search» یا «hash» را امتحان کن.</div>`;
+  list.querySelectorAll('.finder__row').forEach(r=>r.onclick=()=>{document.getElementById('finder').hidden=true; selectLesson(+r.dataset.ci,+r.dataset.li,r.dataset.t);});
+}
+document.getElementById('searchBtn').onclick=openFinder;
+document.getElementById('finderInput').addEventListener('input',e=>renderFinder(e.target.value));
+document.getElementById('finder').addEventListener('click',e=>{if(e.target.id==='finder') e.target.hidden=true;});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault(); openFinder();}
+  if(e.key==='Escape'){document.getElementById('finder').hidden=true; document.getElementById('langs').hidden=true;}
+  if(!document.getElementById('finder').hidden) return;
+  if(e.key==='ArrowRight' && stepIdx<getSteps().length-1){stepIdx++; renderAll();}
+  if(e.key==='ArrowLeft' && stepIdx>0){stepIdx--; renderAll();}
+});
+// Langs
+const LANGS=[["FA","فارسی — Persian"],["EN","English"],["ES","Español"],["FR","Français"],["DE","Deutsch"],["JA","日本語"],["KO","한국어"],["ZH","中文"]];
+document.getElementById('langBtn').onclick=()=>{const p=document.getElementById('langs'); p.hidden=!p.hidden; document.getElementById('langList').innerHTML=LANGS.map(([c,n])=>`<button class="finder__row ${c==='FA'?'is-selected':''}" style="min-height:46px"><span style="width:32px;height:32px;border:1px solid var(--line-strong);border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:700">${c}</span><span style="flex:1"><b>${n}</b></span>${c==='FA'?'✓':''}</button>`).join(''); document.getElementById('langList').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.getElementById('langs').hidden=true; showToast('زبان این نسخه فارسی است — نسخه‌ی اصلی بیش از ۲۰ زبان دارد');});};
+document.getElementById('langs').addEventListener('click',e=>{if(e.target.id==='langs') e.target.hidden=true;});
+renderAll();
+</script>
+</body>
+</html>
