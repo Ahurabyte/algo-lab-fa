@@ -2,7 +2,7 @@
 
 نسخه‌ی فارسی [Algo Lab](http://byte-sized-algorithms.vercel.app) — آموزش ساختمان داده و الگوریتم، قدم‌به‌قدم.
 
-- **نسخه‌ی زنده:** https://ahurabyte.github.io/algo-lab-fa/
+- **نسخه‌ی زنده:** https://ahuracode.github.io/algo-lab-fa/
 - **اصل (انگلیسی):** http://byte-sized-algorithms.vercel.app — ساخته‌ی [Dilum Sanjaya](https://x.com/DilumSanjaya)
 
 ## چی داخلشه؟
